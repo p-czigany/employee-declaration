@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -13,7 +14,7 @@ import java.util.stream.Collectors;
 public class EmployeeDeclaration {
   @Id @GeneratedValue private Long id;
 
-  @OneToMany private Set<StatementAnswer> statementAnswers;
+  @OneToMany private Set<StatementAnswer> statementAnswers = new HashSet<>();
   @ManyToOne private Employee employee;
 
   public EmployeeDeclaration() {}

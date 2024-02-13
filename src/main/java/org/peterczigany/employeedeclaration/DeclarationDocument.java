@@ -8,6 +8,7 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -18,7 +19,7 @@ import java.util.stream.IntStream;
 public class DeclarationDocument {
   @Id @GeneratedValue private Long id;
 
-  @OneToMany private List<DeclarationStatement> statements;
+  @OneToMany private List<DeclarationStatement> statements = new ArrayList<>();
   private LocalDate startOfDeclarationPeriod;
   private LocalDate endOfDeclarationPeriod;
   private Integer retentionPeriodInYears;
