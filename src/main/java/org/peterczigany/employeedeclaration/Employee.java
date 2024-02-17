@@ -1,20 +1,37 @@
 package org.peterczigany.employeedeclaration;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "munkavallalo")
 public class Employee {
-  @Id private String id;
 
+  @Column(name = "munkaviszony_azonosito", nullable = false, unique = true)
+  @Id
+  private String id;
+
+  @Column(name = "vezeteknev", nullable = false)
   private String lastName;
+
+  @Column(name = "keresztnev", nullable = false)
   private String firstName;
+
+  @Column(name = "pozicio", nullable = false)
   private String position;
+
+  @Column(name = "szervezet_kod", nullable = false)
   private String organizationCode;
+
+  @Column(name = "szervezet_nev", nullable = false)
   private String organizationName;
+
+  @Column(name = "vezeto", nullable = false)
   private Boolean isManager;
 
-  public Employee() {}
+  protected Employee() {}
 
   public Employee(
       String id,
@@ -81,7 +98,7 @@ public class Employee {
     this.organizationName = organizationName;
   }
 
-  public Boolean getManager() {
+  public Boolean isManager() {
     return isManager;
   }
 
