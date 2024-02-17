@@ -1,15 +1,22 @@
 package org.peterczigany.employeedeclaration;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "valasz")
 public class StatementAnswer {
   @Id @GeneratedValue private Long id;
 
-  @ManyToOne private DeclarationStatement statement;
+  @Column(name = "allitas", nullable = false)
+  @ManyToOne
+  private DeclarationStatement statement;
+
+  @Column(name = "ertek", nullable = false)
   private Boolean answer;
 
   public StatementAnswer() {}
