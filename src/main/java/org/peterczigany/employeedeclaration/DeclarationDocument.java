@@ -32,7 +32,7 @@ public class DeclarationDocument {
   @Column(name = "nyilatkozasi_idoszak_vege", nullable = false)
   private LocalDate endOfDeclarationPeriod;
 
-  @Column(name = "megorzesi_idoszak_evei", nullable = false)
+  @Column(name = "megorzesi_idoszak_evei", nullable = false, columnDefinition = "integer default 3")
   private Integer retentionPeriodInYears;
 
   @OneToMany private Set<EmployeeDeclaration> employeeDeclarations = new HashSet<>();
