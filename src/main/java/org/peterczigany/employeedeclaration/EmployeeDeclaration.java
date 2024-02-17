@@ -26,7 +26,7 @@ public class EmployeeDeclaration {
   public EmployeeDeclaration() {}
 
   public EmployeeDeclaration(
-      Map<DeclarationStatement, Boolean> declarationAnswers, Employee employee) {
+      Map<DeclarationStatement, Answer> declarationAnswers, Employee employee) {
     this(
         null,
         declarationAnswers.keySet().stream()

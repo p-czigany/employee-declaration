@@ -2,6 +2,8 @@ package org.peterczigany.employeedeclaration;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
@@ -16,16 +18,17 @@ public class StatementAnswer {
   @ManyToOne
   private DeclarationStatement statement;
 
+  @Enumerated(EnumType.STRING)
   @Column(name = "ertek", nullable = false)
-  private Boolean answer;
+  private Answer answer;
 
   protected StatementAnswer() {}
 
-  public StatementAnswer(DeclarationStatement statement, Boolean answer) {
+  public StatementAnswer(DeclarationStatement statement, Answer answer) {
     this(null, statement, answer);
   }
 
-  public StatementAnswer(Long id, DeclarationStatement statement, Boolean answer) {
+  public StatementAnswer(Long id, DeclarationStatement statement, Answer answer) {
     this.id = id;
     this.statement = statement;
     this.answer = answer;
@@ -47,11 +50,11 @@ public class StatementAnswer {
     this.statement = statement;
   }
 
-  public Boolean isAnswer() {
+  public Answer getAnswer() {
     return answer;
   }
 
-  public void setAnswer(Boolean answer) {
+  public void setAnswer(Answer answer) {
     this.answer = answer;
   }
 }

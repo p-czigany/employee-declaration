@@ -63,7 +63,7 @@ public class DeclarationDocument {
     this.declarers = declarers;
   }
 
-  public void declare(List<Boolean> orderedAnswers, Employee employee) {
+  public void declare(List<Answer> orderedAnswers, Employee employee) {
     employeeDeclarations.add(
         new EmployeeDeclaration(
             IntStream.range(0, statements.size())
