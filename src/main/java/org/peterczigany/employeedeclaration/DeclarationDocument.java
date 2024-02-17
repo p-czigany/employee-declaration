@@ -35,11 +35,8 @@ public class DeclarationDocument {
   @Column(name = "megorzesi_idoszak_evei", nullable = false)
   private Integer retentionPeriodInYears;
 
-  @Column(name = "nyilatkozattetelek", nullable = false)
-  @OneToMany
-  private Set<EmployeeDeclaration> employeeDeclarations = new HashSet<>();
+  @OneToMany private Set<EmployeeDeclaration> employeeDeclarations = new HashSet<>();
 
-  @Column(name = "nyilatkozok")
   @ManyToMany
   @JoinTable(
       name = "nyilatkozatokhoz_tartozo_munkavallalok",
