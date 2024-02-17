@@ -44,7 +44,7 @@ public class DeclarationDocument {
       inverseJoinColumns = @JoinColumn(name = "munkavallalo"))
   Set<Employee> declarers = new HashSet<>();
 
-  public DeclarationDocument() {}
+  protected DeclarationDocument() {}
 
   public DeclarationDocument(
       Long id,
