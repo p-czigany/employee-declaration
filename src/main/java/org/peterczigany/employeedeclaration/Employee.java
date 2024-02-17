@@ -11,7 +11,7 @@ public class Employee {
 
   @Column(name = "munkaviszony_azonosito", nullable = false, unique = true, length = 8)
   @Id
-  private String id;
+  private String employmentId;
 
   @Column(name = "vezeteknev", nullable = false)
   private String lastName;
@@ -34,14 +34,14 @@ public class Employee {
   protected Employee() {}
 
   public Employee(
-      String id,
+      String employmentId,
       String lastName,
       String firstName,
       String position,
       String organizationCode,
       String organizationName,
       Boolean isManager) {
-    this.id = id;
+    this.employmentId = employmentId;
     this.lastName = lastName;
     this.firstName = firstName;
     this.position = position;
@@ -51,11 +51,11 @@ public class Employee {
   }
 
   public String getId() {
-    return id;
+    return employmentId;
   }
 
   public void setId(String id) {
-    this.id = id;
+    this.employmentId = id;
   }
 
   public String getLastName() {
