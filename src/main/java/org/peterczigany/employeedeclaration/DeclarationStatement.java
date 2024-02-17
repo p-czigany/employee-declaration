@@ -1,16 +1,20 @@
 package org.peterczigany.employeedeclaration;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "allitas")
 public class DeclarationStatement {
   @Id @GeneratedValue private Long id;
 
+  @Column(name = "allistas_szovege_html", nullable = false)
   private String statementHtml;
 
-  public DeclarationStatement() {}
+  protected DeclarationStatement() {}
 
   public DeclarationStatement(Long id, String statementHtml) {
     this.id = id;
