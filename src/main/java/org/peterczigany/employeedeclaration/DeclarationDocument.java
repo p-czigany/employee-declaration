@@ -1,5 +1,6 @@
 package org.peterczigany.employeedeclaration;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -7,6 +8,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -16,21 +18,32 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Entity
+@Table(name = "nyilatkozat")
 public class DeclarationDocument {
   @Id @GeneratedValue private Long id;
 
-  @OneToMany private List<DeclarationStatement> statements = new ArrayList<>();
+  @Column(name = "allitasok", nullable = false)
+  @OneToMany
+  private List<DeclarationStatement> statements = new ArrayList<>();
+
+  @Column(name = "nyilatkozasi_idoszak_kezdete")
   private LocalDate startOfDeclarationPeriod;
+
+  @Column(name = "nyilatkozasi_idoszak_vege")
   private LocalDate endOfDeclarationPeriod;
+
+  @Column(name = "megorzesi_idoszak_evei")
   private Integer retentionPeriodInYears;
+
   @OneToMany private Set<EmployeeDeclaration> employeeDeclarations = new HashSet<>();
 
+  @Column(name = "nyilatkozok")
   @ManyToMany
   @JoinTable(
-      name = "document_employee",
-      joinColumns = @JoinColumn(name = "document_id"),
-      inverseJoinColumns = @JoinColumn(name = "employee_id"))
-  Set<Employee> declarers;
+      name = "nyilatkozathoz_tartozo_munkavallalo",
+      joinColumns = @JoinColumn(name = "nyilatkozat_id"),
+      inverseJoinColumns = @JoinColumn(name = "munkavallalo_id"))
+  Set<Employee> declarers = new HashSet<>();
 
   public DeclarationDocument() {}
 
