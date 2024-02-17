@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 @Table(name = "munkavallalo")
 public class Employee {
 
-  @Column(name = "munkaviszony_azonosito", nullable = false, unique = true)
+  @Column(name = "munkaviszony_azonosito", nullable = false, unique = true, length = 8)
   @Id
   private String id;
 
