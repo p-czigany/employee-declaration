@@ -23,7 +23,7 @@ public class EmployeeDeclaration {
   @ManyToOne
   private Employee employee;
 
-  public EmployeeDeclaration() {}
+  protected EmployeeDeclaration() {}
 
   public EmployeeDeclaration(
       Map<DeclarationStatement, Answer> declarationAnswers, Employee employee) {
