@@ -26,23 +26,25 @@ public class DeclarationDocument {
   @OneToMany
   private List<DeclarationStatement> statements = new ArrayList<>();
 
-  @Column(name = "nyilatkozasi_idoszak_kezdete")
+  @Column(name = "nyilatkozasi_idoszak_kezdete", nullable = false)
   private LocalDate startOfDeclarationPeriod;
 
-  @Column(name = "nyilatkozasi_idoszak_vege")
+  @Column(name = "nyilatkozasi_idoszak_vege", nullable = false)
   private LocalDate endOfDeclarationPeriod;
 
-  @Column(name = "megorzesi_idoszak_evei")
+  @Column(name = "megorzesi_idoszak_evei", nullable = false)
   private Integer retentionPeriodInYears;
 
-  @OneToMany private Set<EmployeeDeclaration> employeeDeclarations = new HashSet<>();
+  @Column(name = "nyilatkozattetelek", nullable = false)
+  @OneToMany
+  private Set<EmployeeDeclaration> employeeDeclarations = new HashSet<>();
 
   @Column(name = "nyilatkozok")
   @ManyToMany
   @JoinTable(
-      name = "nyilatkozathoz_tartozo_munkavallalo",
-      joinColumns = @JoinColumn(name = "nyilatkozat_id"),
-      inverseJoinColumns = @JoinColumn(name = "munkavallalo_id"))
+      name = "nyilatkozatokhoz_tartozo_munkavallalok",
+      joinColumns = @JoinColumn(name = "nyilatkozat"),
+      inverseJoinColumns = @JoinColumn(name = "munkavallalo"))
   Set<Employee> declarers = new HashSet<>();
 
   public DeclarationDocument() {}
