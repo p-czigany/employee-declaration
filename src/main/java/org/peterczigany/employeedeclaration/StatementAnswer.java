@@ -19,7 +19,7 @@ public class StatementAnswer {
   @Column(name = "ertek", nullable = false)
   private Boolean answer;
 
-  public StatementAnswer() {}
+  protected StatementAnswer() {}
 
   public StatementAnswer(DeclarationStatement statement, Boolean answer) {
     this(null, statement, answer);
