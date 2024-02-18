@@ -17,10 +17,12 @@ import java.util.stream.Collectors;
 public class EmployeeDeclaration {
   @Id @GeneratedValue private Long id;
 
-  @OneToMany private Set<StatementAnswer> statementAnswers = new HashSet<>();
+  @OneToMany
+  @JoinColumn(name = "nyilatkozattetel", nullable = false)
+  private Set<StatementAnswer> statementAnswers = new HashSet<>();
 
   @ManyToOne
-  @JoinColumn(name ="munkavallalo", nullable = false)
+  @JoinColumn(name = "munkavallalo", nullable = false)
   private Employee employee;
 
   protected EmployeeDeclaration() {}

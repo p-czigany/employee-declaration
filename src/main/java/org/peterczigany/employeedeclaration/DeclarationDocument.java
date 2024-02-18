@@ -23,7 +23,7 @@ public class DeclarationDocument {
   @Id @GeneratedValue private Long id;
 
   @OneToMany
-  @JoinColumn(name = "nyilatkozat")
+  @JoinColumn(name = "nyilatkozat", nullable = false)
   private List<DeclarationStatement> statements = new ArrayList<>();
 
   @Column(name = "nyilatkozasi_idoszak_kezdete", nullable = false)
@@ -36,7 +36,7 @@ public class DeclarationDocument {
   private Integer retentionPeriodInYears;
 
   @OneToMany
-  @JoinColumn(name = "nyilatkozat")
+  @JoinColumn(name = "nyilatkozat", nullable = false)
   private Set<EmployeeDeclaration> employeeDeclarations = new HashSet<>();
 
   @ManyToMany
