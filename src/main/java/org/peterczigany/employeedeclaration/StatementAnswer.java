@@ -6,6 +6,7 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -14,8 +15,8 @@ import jakarta.persistence.Table;
 public class StatementAnswer {
   @Id @GeneratedValue private Long id;
 
-  @Column(name = "allitas", nullable = false)
   @ManyToOne
+  @JoinColumn(name = "allitas", nullable = false)
   private DeclarationStatement statement;
 
   @Enumerated(EnumType.STRING)
