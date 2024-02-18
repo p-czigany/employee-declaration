@@ -22,8 +22,8 @@ import java.util.stream.IntStream;
 public class DeclarationDocument {
   @Id @GeneratedValue private Long id;
 
-  @Column(name = "allitasok", nullable = false)
   @OneToMany
+  @JoinColumn(name = "nyilatkozat")
   private List<DeclarationStatement> statements = new ArrayList<>();
 
   @Column(name = "nyilatkozasi_idoszak_kezdete", nullable = false)
@@ -35,7 +35,9 @@ public class DeclarationDocument {
   @Column(name = "megorzesi_idoszak_evei", nullable = false, columnDefinition = "integer default 3")
   private Integer retentionPeriodInYears;
 
-  @OneToMany private Set<EmployeeDeclaration> employeeDeclarations = new HashSet<>();
+  @OneToMany
+  @JoinColumn(name = "nyilatkozat")
+  private Set<EmployeeDeclaration> employeeDeclarations = new HashSet<>();
 
   @ManyToMany
   @JoinTable(
